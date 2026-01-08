@@ -1,3 +1,20 @@
+<svg viewBox="0 0 1440 900" preserveAspectRatio="none">
+    <defs>
+        <linearGradient id="verdeHumo" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#004d26" stop-opacity="0.6" />
+            <stop offset="50%" stop-color="#00cc66" stop-opacity="0.4" />
+            <stop offset="100%" stop-color="#ccffcc" stop-opacity="0.2" />
+        </linearGradient>
+    </defs>
+    <path fill="url(#verdeHumo)">
+        <animate attributeName="d" dur="25s" repeatCount="indefinite" values="
+        M0,300 C480,400 960,200 1440,300 L1440,900 L0,900 Z;
+        M0,320 C480,180 960,500 1440,320 L1440,900 L0,900 Z;
+        M0,300 C480,400 960,200 1440,300 L1440,900 L0,900 Z" />
+    </path>
+</svg>
+
+
 <div class="login-container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
     <p-card styleClass="login-card"
         [style]="{ width: '25rem', overflow: 'hidden', display: 'flex', 'flex-direction': 'column', 'align-items': 'center' }">
@@ -19,6 +36,7 @@
             </p-floatlabel>
         </div>
 
+        <label>Olvidaste tu contraseña?</label>
 
         <ng-template #footer>
             <div class="flex gap-4 mt-1" style="display: flex; justify-content: center; width: 100%;">
