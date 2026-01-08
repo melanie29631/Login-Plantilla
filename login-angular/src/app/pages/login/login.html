@@ -1,19 +1,4 @@
-<svg viewBox="0 0 1440 900" preserveAspectRatio="none">
-    <defs>
-        <linearGradient id="verdeHumo" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#004d26" stop-opacity="0.6" />
-            <stop offset="50%" stop-color="#00cc66" stop-opacity="0.4" />
-            <stop offset="100%" stop-color="#ccffcc" stop-opacity="0.2" />
-        </linearGradient>
-    </defs>
-    <path fill="url(#verdeHumo)">
-        <animate attributeName="d" dur="25s" repeatCount="indefinite" values="
-        M0,300 C480,400 960,200 1440,300 L1440,900 L0,900 Z;
-        M0,320 C480,180 960,500 1440,320 L1440,900 L0,900 Z;
-        M0,300 C480,400 960,200 1440,300 L1440,900 L0,900 Z" />
-    </path>
-</svg>
-
+<canvas id="smokeCanvas"></canvas>
 
 <div class="login-container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
     <p-card styleClass="login-card"
@@ -45,3 +30,12 @@
         </ng-template>
     </p-card>
 </div>
+
+<script> const canvas = document.getElementById('smokeCanvas'); const ctx = canvas.getContext('2d'); canvas.width = window.innerWidth; canvas.height = window.innerHeight; const particles = []; function createParticle() {
+        const x = Math.random() * canvas.width; const y = canvas.height + 50; const size = Math.random() * 80 + 20; const speedY = Math.random() * -1.5 - 0.5; const opacity = Math.random() * 0.3 + 0.2; const hue = 120 + Math.random() * 40;
+        particles.push({ x, y, size, speedY, opacity, hue });
+    } function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); for (let p of particles) { ctx.beginPath(); const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size); gradient.addColorStop(0, `hsla(${p.hue}, 100%, 50%, ${p.opacity})`); gradient.addColorStop(1, `hsla(${p.hue}, 100%, 50%, 0)`); ctx.fillStyle = gradient; ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill(); p.y += p.speedY; p.opacity -= 0.001; }
+        // eliminar partículas invisibles
+        for (let i = particles.length - 1; i >= 0; i--) { if (particles[i].opacity <= 0) particles.splice(i, 1); }
+    } function animate() { drawParticles(); if (particles.length < 200) createParticle(); requestAnimationFrame(animate); } animate(); </script>
