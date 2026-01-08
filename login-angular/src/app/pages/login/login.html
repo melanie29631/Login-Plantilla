@@ -1,7 +1,7 @@
 <div class="login-container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-    <p-card
+    <p-card styleClass="login-card"
         [style]="{ width: '25rem', overflow: 'hidden', display: 'flex', 'flex-direction': 'column', 'align-items': 'center' }">
-        <ng-template #title> Inicio de sesión </ng-template>
+        <ng-template #title><i class="pi pi-user"></i> Inicio de sesión </ng-template>
         <div style="margin-top: 1rem;"></div>
 
 
@@ -14,7 +14,7 @@
 
         <div style="margin-bottom: 0.5rem;">
             <p-floatlabel>
-                <input id="password" pInputText [(ngModel)]="password" />
+                <input id="password" pInputText [(ngModel)]="password" required type="password" />
                 <label for="password">Contraseña</label>
             </p-floatlabel>
         </div>
