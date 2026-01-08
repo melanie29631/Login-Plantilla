@@ -1,14 +1,23 @@
 @import "primeicons/primeicons.css";
 
-
-#smokeCanvas {
+.video-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     z-index: -1;
-    /* detrás del contenido */
+    /* detrás del login */
+}
+
+#bgVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ajusta al tamaño de la pantalla */
+    opacity: 0.5;
+    /* controla la intensidad del video */
 }
 
 
